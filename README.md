@@ -14,6 +14,7 @@
 - React
 - Vite
 - JavaScript
+- Shadcn ui
 - Firebase
 
 ## 실행 방법
