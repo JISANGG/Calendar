@@ -17,29 +17,13 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
-import { Calendar } from "@/components/ui/calendar"
 import { CalendarDays, Plus } from "lucide-react"
-import DateAdd from "@/pages/DateAdd"
+import CalendarPage from "@/pages/CalendarPage"
 import Login from "@/pages/Login"
 
 export function App() {
-  const [date, setDate] = React.useState<Date | undefined>(new Date())
-  const [isDateAddOpen, setIsDateAddOpen] = React.useState(false)
   const [isLoginOpen, setIsLoginOpen] = React.useState(false)
-  const [events, setEvents] = React.useState<
-    { title: string; date: string; time: string }[]
-  >([])
-
-  function addEvent(title: string, eventDate: string, time: string) {
-    setEvents((currentEvents) => [
-      ...currentEvents,
-      { title, date: eventDate, time },
-    ])
-    setIsDateAddOpen(false)
-  }
-
-
-
+  const [isDateAddOpen, setIsDateAddOpen] = React.useState(false)
 
   return (
     <SidebarProvider>
@@ -86,74 +70,33 @@ export function App() {
         <header className="flex h-14 items-center gap-3 border-b px-4">
           <SidebarTrigger />
           <h1 className="font-medium">내 일정</h1>
-          <Button variant="ghost" className="ml-auto" onClick={() => setIsLoginOpen(true)}>
+          <Button
+            variant="ghost"
+            className="ml-auto"
+            onClick={() => setIsLoginOpen(true)}
+          >
             로그인
           </Button>
-          <Button size="sm" onClick={() => setIsDateAddOpen(true)}>
+          <Button
+            className="pt-1.5 pb-1.5"
+            size="sm"
+            onClick={() => setIsDateAddOpen(true)}
+          >
             <Plus />
             일정 추가하기
           </Button>
         </header>
-        <div className="mt-10 ml-10 w-full max-w-2xl">
-          <h2 className="text-2xl font-semibold tracking-tight">나의 캘린더</h2>
-          <p className="mt-1 text-muted-foreground">
-            중요한 일정을 한곳에서 관리해 보세요.
-          </p>
-        </div>
-        <main id="calendar" className="flex gap-8 p-6 md:p-10">
-          <div>
-            <Calendar
-              mode="single"
-              selected={date}
-              onSelect={setDate}
-              className="w-95 rounded-lg border"
-              captionLayout="dropdown"
-            />
-            {events.length > 0 && (
-              <section className="mt-6 w-95" aria-label="등록된 일정">
-                <h2 className="mb-3 font-medium">등록된 일정</h2>
-                <ul className="grid gap-2">
-                  {events.map((event, index) => (
-                    <li
-                      key={`${event.date}-${event.time}-${event.title}-${index}`}
-                      className="flex rounded-lg border p-3 text-sm"
-                    >
-                      <div>
-                      <p className="font-medium">{event.title}</p>
-                      <p className="mt-1 text-muted-foreground">
-                        {event.date} · {event.time}
-                      </p>
-                      </div>
-                      <div className="ml-auto">
-                        <Button
-                          variant="destructive"
-                          size="sm"
-                          onClick={() => {
-                            setEvents((currentEvents) =>
-                              currentEvents.filter((_, i) => i !== index)
-                            )
-                          }}
-                        >
-                          삭제
-                        </Button>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            )}
-          </div>
-        </main>
+              <div className="mt-10 ml-10 w-full max-w-2xl">
+                <h2 className="text-2xl font-semibold tracking-tight">나의 캘린더</h2>
+                <p className="mt-1 text-muted-foreground">
+                  중요한 일정을 한곳에서 관리해 보세요.
+                </p>
+              </div>
+        <CalendarPage
+          isDateAddOpen={isDateAddOpen}
+          onDateAddOpenChange={setIsDateAddOpen}
+        />
       </SidebarInset>
-      <Dialog open={isDateAddOpen} onOpenChange={setIsDateAddOpen}>
-        <DialogContent>
-          <DateAdd
-            initialDate={date ?? new Date()}
-            onCancel={() => setIsDateAddOpen(false)}
-            onAdd={addEvent}
-          />
-        </DialogContent>
-      </Dialog>
       <Dialog open={isLoginOpen} onOpenChange={setIsLoginOpen}>
         <DialogContent className="max-w-md">
           <Login />

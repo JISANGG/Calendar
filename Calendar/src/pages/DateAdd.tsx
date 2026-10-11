@@ -7,13 +7,18 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-
+import { Input } from "@/components/ui/input";
 
 type DateAddProps = {
   initialDate: Date
   onCancel: () => void
-  onAdd: (title: string, date: string, time: string) => void
+  onAdd: (
+    title: string,
+    content: string,
+    date: string,
+    time: string,
+    amountSpend: string,
+  ) => void
 }
 
 function toDateInputValue(date: Date) {
@@ -27,14 +32,16 @@ export function DateAdd({ initialDate, onCancel, onAdd }: DateAddProps) {
   const [title, setTitle] = React.useState("")
   const [date, setDate] = React.useState(() => toDateInputValue(initialDate))
   const [time, setTime] = React.useState("09:00")
+  const [content, setContent] = React.useState("")
+  const [amountspend, setAmountspend] = React.useState("")
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    onAdd(title.trim(), date, time)
+    onAdd(title.trim(), content.trim(), date, time, amountspend.trim())
   }
 
   return (
-    <form className="grid gap-6 h-80" onSubmit={handleSubmit}>
+    <form className="grid h-130 gap-6" onSubmit={handleSubmit}>
       <DialogHeader>
         <DialogTitle>일정 추가</DialogTitle>
         <DialogDescription>
@@ -50,6 +57,16 @@ export function DateAdd({ initialDate, onCancel, onAdd }: DateAddProps) {
             value={title}
             onChange={(event) => setTitle(event.target.value)}
             placeholder="예: 팀원과 회의"
+          />
+        </label>
+        <label className="grid gap-2 text-sm font-medium">
+          상세 내용
+          <Input
+            required
+            type="text"
+            value={content}
+            onChange={(event) => setContent(event.target.value)}
+            placeholder=""
           />
         </label>
         <div className="grid grid-cols-2 gap-4">
@@ -71,6 +88,21 @@ export function DateAdd({ initialDate, onCancel, onAdd }: DateAddProps) {
               onChange={(event) => setTime(event.target.value)}
             />
           </label>
+        </div>
+        <div>
+          <label className="grid gap-2 text-sm font-medium">
+            지출 추가
+            <Input
+              required
+              type="text"
+              value={amountspend}
+              placeholder="예: 10000원"
+              onChange={(event) => setAmountspend(event.target.value)}
+            />
+          </label>
+        </div>
+        <div>
+          <label className="grid gap-2 text-sm font-medium">위치 추가</label>
         </div>
       </div>
       <DialogFooter>

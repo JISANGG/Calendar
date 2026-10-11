@@ -21,9 +21,12 @@ export function Login() {
 
   return (
     <Card className="w-100 border-0 bg-transparent py-0 shadow-none ring-0">
-      <form onSubmit={handleSubmit} className="grid gap-10 ml-auto mr-auto w-full max-w-sm">
+      <form
+        onSubmit={handleSubmit}
+        className="mr-auto ml-auto grid w-full max-w-sm gap-10"
+      >
         <CardHeader className="px-0 pt-0">
-          <CardTitle className="font-bold text-lg">로그인</CardTitle>
+          <CardTitle className="text-lg font-bold">로그인</CardTitle>
           <CardDescription>
             계정에 로그인해 캘린더를 관리하세요.
           </CardDescription>
