@@ -123,9 +123,9 @@ export function App() {
             </div>
           </SidebarHeader>
           <SidebarContent>
-            <div className="items-center px-2 py-1.5">
+            <div className="mt-auto px-2 py-1.5">
               <input
-                className="h-15 w-full rounded-xl border px-2 text-xs"
+                className="bg-gray-200 h-15 w-full rounded-xl border px-2 text-xs"
                 placeholder="AI에게 일정을 질문하세요..."
               />
             </div>

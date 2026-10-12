@@ -10,6 +10,7 @@ type CalendarEvent = {
   date: string
   time: string
   amountSpend: string
+  location?: string
 }
 
 type CalendarPageProps = {
@@ -30,10 +31,11 @@ export function CalendarPage({
     eventDate: string,
     time: string,
     amountSpend: string,
+    location?: string,
   ) {
     setEvents((currentEvents) => [
       ...currentEvents,
-      { title, content, date: eventDate, time, amountSpend },
+      { title, content, date: eventDate, time, amountSpend, location },
     ])
     onDateAddOpenChange(false)
   }

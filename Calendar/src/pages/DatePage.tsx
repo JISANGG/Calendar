@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+
 type DateProps = {
   onCancel: () => void
   selectedDate?: Date
@@ -16,6 +17,7 @@ type DateProps = {
     date: string
     time: string
     amountSpend: string
+    location?: string
   }[]
 }
 
@@ -55,6 +57,11 @@ export function DatePage({ selectedDate, events, onCancel }: DateProps) {
                   <CardDescription className="text-sm">
                     {event.date} {event.time} · 지출 {event.amountSpend}
                   </CardDescription>
+                  {event.location && (
+                    <CardDescription className="text-sm text-blue-600">
+                      📍 {event.location}
+                    </CardDescription>
+                  )}
                 </div>
 
                 <CardAction className="shrink-0 self-start">
