@@ -23,7 +23,7 @@ type DateProps = {
 
 export function DatePage({ selectedDate, events, onCancel }: DateProps) {
   return (
-    <Card className="h-100 w-full max-w-180 rounded-3xl py-10">
+    <Card className="h-100 w-full rounded-3xl border-none shadow-none ring-0">
       <CardContent>
         <CardHeader>
           <CardTitle className="text-2xl font-bold">당신의 일정</CardTitle>
@@ -46,7 +46,7 @@ export function DatePage({ selectedDate, events, onCancel }: DateProps) {
           {events.map((event, index) => (
             <CardContent
               key={`${event.date}-${event.time}-${index}`}
-              className="h-full rounded-xl border p-4"
+              className="h-full rounded-xl p-4 border-1 shadow-1"
             >
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0 flex-1">

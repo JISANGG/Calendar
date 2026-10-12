@@ -44,14 +44,14 @@ export function CalendarPage({
     <>
       <main
         id="calendar"
-        className="grid min-w-0 grid-cols-1 gap-8 p-6 md:p-10 2xl:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]"
+        className="flex min-w-0 flex-col gap-6 px-4 py-2 sm:px-6"
       >
         <div className="min-w-0">
           <Calendar
             mode="single"
             selected={date}
             onSelect={setDate}
-            className="w-full max-w-200 rounded-3xl border px-6 py-7"
+            className="h-140 w-full min-w-0 rounded-3xl border px-4 py-4"
             captionLayout="dropdown"
           />
         </div>

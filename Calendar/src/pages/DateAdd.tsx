@@ -1,9 +1,5 @@
 import * as React from "react"
 
-import { Slider, Sketch, Material, Colorful, Compact, Circle, Swatch, Wheel, Block, Github, Chrome } from '@uiw/react-color';
-import { Alpha, Hue, ShadeSlider, Saturation, Interactive, hsvaToHslaString } from '@uiw/react-color';
-import { EditableInput, EditableInputRGBA, EditableInputHSLA } from '@uiw/react-color';
-
 import { APIProvider, AdvancedMarker, Map, useMapsLibrary } from "@vis.gl/react-google-maps"
 
 import { Button } from "@/components/ui/button"
@@ -236,11 +232,13 @@ export function DateAdd({ initialDate, onCancel, onAdd }: DateAddProps) {
           </div>
 
           <HoverCard>
-            <HoverCardTrigger asChild>
-              <Button type="button" variant="outline" className="w-fit">
-                <MapPin className="mr-2 h-4 w-4" />
-                위치 추가하기
-              </Button>
+            <HoverCardTrigger>
+              <div>
+                <Button type="button" variant="outline" className="w-fit">
+                  <MapPin className="mr-2 h-4 w-4" />
+                  위치 추가하기
+                </Button>
+              </div>
             </HoverCardTrigger>
             <HoverCardContent className="w-[360px] p-3">
               {apiKey ? (
@@ -253,16 +251,6 @@ export function DateAdd({ initialDate, onCancel, onAdd }: DateAddProps) {
                   <p>.env에 VITE_GOOGLE_MAPS_API_KEY를 추가해 주세요.</p>
                 </div>
               )}
-            </HoverCardContent>
-          </HoverCard>
-        </div>
-        <div>
-          <HoverCard>
-            <HoverCardTrigger>
-                <Button className="w-fit " variant="outline">색상 고르기</Button>
-            </HoverCardTrigger>
-            <HoverCardContent>
-              <Sketch></Sketch>
             </HoverCardContent>
           </HoverCard>
         </div>

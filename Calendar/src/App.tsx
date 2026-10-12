@@ -98,7 +98,7 @@ export function App() {
             <span className="hidden xl:inline">일정 추가하기</span>
           </Button>
         </header>
-        <div className="mt-10 ml-10 w-full max-w-2xl">
+        <div className="mt-5 ml-10 w-full max-w-2xl">
           <h2 className="text-2xl font-semibold tracking-tight">나의 캘린더</h2>
           <p className="mt-1 text-muted-foreground">
             중요한 일정을 한곳에서 관리해 보세요.
