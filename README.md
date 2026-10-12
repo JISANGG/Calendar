@@ -13,7 +13,7 @@
 
 - React
 - Vite
-- JavaScript
+- TypeScript
 - Shadcn ui
 - Firebase
 
