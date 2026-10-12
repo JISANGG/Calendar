@@ -7,8 +7,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { Dialog } from "@/components/ui/dialog"
-
 type DateProps = {
   onCancel: () => void
   selectedDate?: Date
@@ -23,7 +21,7 @@ type DateProps = {
 
 export function DatePage({ selectedDate, events, onCancel }: DateProps) {
   return (
-    <Card className="h-100 w-180 rounded-3xl py-10">
+    <Card className="h-100 w-full max-w-180 rounded-3xl py-10">
       <CardContent>
         <CardHeader>
           <CardTitle className="text-2xl font-bold">당신의 일정</CardTitle>
@@ -48,18 +46,28 @@ export function DatePage({ selectedDate, events, onCancel }: DateProps) {
               key={`${event.date}-${event.time}-${index}`}
               className="h-full rounded-xl border p-4"
             >
-              <CardAction>
-                <Button type="button" variant="destructive" onClick={onCancel}>
-                  취소
-                </Button>
-              </CardAction>
-              <CardTitle className="font-semibold">{event.title}</CardTitle>
-              <CardDescription className="text-sm text-muted-foreground">
-                {event.content}
-              </CardDescription>
-              <CardDescription className="text-sm">
-                {event.date} {event.time} · 지출 {event.amountSpend}
-              </CardDescription>
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0 flex-1">
+                  <CardTitle className="font-semibold">{event.title}</CardTitle>
+                  <CardDescription className="text-sm text-muted-foreground">
+                    {event.content}
+                  </CardDescription>
+                  <CardDescription className="text-sm">
+                    {event.date} {event.time} · 지출 {event.amountSpend}
+                  </CardDescription>
+                </div>
+
+                <CardAction className="shrink-0 self-start">
+                  <Button
+                    className="whitespace-nowrap text-xs"
+                    type="button"
+                    variant="destructive"
+                    onClick={onCancel}
+                  >
+                    삭제
+                  </Button>
+                </CardAction>
+              </div>
             </CardContent>
           ))}
         </div>

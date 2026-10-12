@@ -40,17 +40,20 @@ export function CalendarPage({
 
   return (
     <>
-      <main id="calendar" className=" flex gap-8 p-6 md:p-10">
-        <div>
+      <main
+        id="calendar"
+        className="grid min-w-0 grid-cols-1 gap-8 p-6 md:p-10 2xl:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]"
+      >
+        <div className="min-w-0">
           <Calendar
             mode="single"
             selected={date}
             onSelect={setDate}
-            className="w-200 rounded-3xl border py-7 px-6"
+            className="w-full max-w-200 rounded-3xl border px-6 py-7"
             captionLayout="dropdown"
           />
         </div>
-        <div>
+        <div className="min-w-0">
           <DatePage selectedDate={date} events={events} onCancel={() => {}} />
         </div>
       </main>
