@@ -86,12 +86,12 @@ function Calendar({
           defaultClassNames.caption_label
         ),
         month_grid: cn(
-          "w-full min-w-0 table-fixed border-collapse",
+          "mx-auto w-fit min-w-0 table-fixed border-collapse",
           defaultClassNames.month_grid
         ),
         weekdays: cn(defaultClassNames.weekdays),
         weekday: cn(
-          "h-(--cell-size) rounded-(--cell-radius) text-center text-[0.8rem] font-normal text-muted-foreground select-none [&:first-child]:text-red-600 [&:last-child]:text-blue-600",
+          "h-(--cell-size) w-(--cell-size) rounded-(--cell-radius) text-center text-[0.8rem] font-normal text-muted-foreground select-none [&:first-child]:text-red-600 [&:last-child]:text-blue-600",
           defaultClassNames.weekday
         ),
         week: cn(defaultClassNames.week),
@@ -104,7 +104,7 @@ function Calendar({
           defaultClassNames.week_number
         ),
         day: cn(
-          "group/day relative h-(--cell-size) min-w-0 rounded-(--cell-radius) p-0 text-center select-none [&:last-child[data-selected=true]_button]:rounded-r-(--cell-radius)",
+          "group/day relative h-(--cell-size) w-(--cell-size) min-w-0 rounded-(--cell-radius) p-0 text-center select-none [&:last-child[data-selected=true]_button]:rounded-r-(--cell-radius)",
           props.showWeekNumber
             ? "[&:nth-child(2)[data-selected=true]_button]:rounded-l-(--cell-radius)"
             : "[&:first-child[data-selected=true]_button]:rounded-l-(--cell-radius)",
@@ -211,7 +211,7 @@ function CalendarDayButton({
       data-range-end={modifiers.range_end}
       data-range-middle={modifiers.range_middle}
       className={cn(
-        "relative isolate z-10 flex aspect-square size-auto w-full min-w-0 flex-col gap-1 border-0 leading-none font-normal group-data-[focused=true]/day:relative group-data-[focused=true]/day:z-10 group-data-[focused=true]/day:border-ring group-data-[focused=true]/day:ring-[3px] group-data-[focused=true]/day:ring-ring/50 data-[range-end=true]:rounded-(--cell-radius) data-[range-end=true]:rounded-r-(--cell-radius) data-[range-end=true]:bg-primary data-[range-end=true]:text-primary-foreground data-[range-middle=true]:rounded-none data-[range-middle=true]:bg-muted data-[range-middle=true]:text-foreground data-[range-start=true]:rounded-(--cell-radius) data-[range-start=true]:rounded-l-(--cell-radius) data-[range-start=true]:bg-primary data-[range-start=true]:text-primary-foreground data-[weekday=0]:!text-red-600 data-[weekday=6]:!text-blue-600 dark:hover:text-foreground [&>span]:text-xs [&>span]:opacity-70",
+        "relative isolate z-10 flex size-(--cell-size) shrink-0 flex-col gap-1 border-0 leading-none font-normal group-data-[focused=true]/day:relative group-data-[focused=true]/day:z-10 group-data-[focused=true]/day:border-ring group-data-[focused=true]/day:ring-[3px] group-data-[focused=true]/day:ring-ring/50 data-[range-end=true]:rounded-(--cell-radius) data-[range-end=true]:rounded-r-(--cell-radius) data-[range-end=true]:bg-primary data-[range-end=true]:text-primary-foreground data-[range-middle=true]:rounded-none data-[range-middle=true]:bg-muted data-[range-middle=true]:text-foreground data-[range-start=true]:rounded-(--cell-radius) data-[range-start=true]:rounded-l-(--cell-radius) data-[weekday=0]:text-red-600! data-[weekday=6]:text-blue-600! dark:hover:text-foreground [&>span]:text-xs [&>span]:opacity-70",
         defaultClassNames.day,
         className
       )}

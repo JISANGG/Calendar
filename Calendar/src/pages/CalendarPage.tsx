@@ -46,12 +46,12 @@ export function CalendarPage({
         id="calendar"
         className="flex min-w-0 flex-col gap-6 px-4 py-2 sm:px-6"
       >
-        <div className="min-w-0">
+        <div className="h-140 min-w-0 [container-type:size]">
           <Calendar
             mode="single"
             selected={date}
             onSelect={setDate}
-            className="h-140 w-full min-w-0 rounded-3xl border px-4 py-4"
+            className="h-full w-full min-w-0 rounded-3xl border px-4 py-4 [--cell-size:min(calc((100cqw-40px)/7),calc((100cqh-50px)/8))]"
             captionLayout="dropdown"
           />
         </div>

@@ -46,7 +46,7 @@ export function DatePage({ selectedDate, events, onCancel }: DateProps) {
           {events.map((event, index) => (
             <CardContent
               key={`${event.date}-${event.time}-${index}`}
-              className="h-full rounded-xl p-4 border-1 shadow-1"
+              className="w-150 h-full rounded-xl p-4 border shadow-1"
             >
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0 flex-1">

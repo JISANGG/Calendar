@@ -23,3 +23,21 @@
 npm install
 npm run dev
 ```
+
+## Firebase AI 설정
+
+1. Firebase Console에서 웹 앱을 등록하고 Firebase AI Logic을 활성화합니다.
+2. 프로젝트 루트에서 `.env.example`을 `.env`로 복사하고 Firebase Console의 웹 앱 설정값을 입력합니다.
+
+```bash
+cp .env.example .env
+```
+
+`VITE_FIREBASE_API_KEY`, `VITE_FIREBASE_PROJECT_ID`, `VITE_FIREBASE_APP_ID`는 필수입니다.
+3. Google AI Gemini Developer API를 Firebase AI Logic에서 활성화한 뒤 앱을 실행합니다.
+
+```bash
+npm run dev
+```
+
+Firebase 설정값은 웹 앱 식별용이며, Gemini API 키를 프런트엔드 환경변수에 넣지 마세요. AI 답변에는 `gemini-2.5-flash` 모델을 사용합니다.
